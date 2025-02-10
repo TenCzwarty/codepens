@@ -1,0 +1,78 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+:root {
+  /* animation - remember to update ANIMATION_DURATION in the js file */
+  --animation-duration: 100;
+
+  /* font metrics */
+
+  /* CATAMARAN */
+  --font: Catamaran;
+  --fm-capitalHeight: 0.68;
+  --fm-descender: 0.54;
+  --fm-ascender: 1.1;
+
+  /* DANCING SCRIPT */
+  /* --font: "Dancing Script"; */
+  /* --fm-capitalHeight: 0.72; */
+  /* --fm-descender: 0.28; */
+  /* --fm-ascender: 0.92; */
+
+  /* desired capital height and line-height */
+  --capital-height: 100dvh;
+  --line-height: 1;
+  /* --capital-height: 50dvh; */
+  /* --line-height: 2; */
+}
+
+body {
+  background: rebeccapurple;
+  color: whitesmoke;
+  margin: 0;
+}
+
+.marquee {
+  position: relative;
+  overflow: hidden;
+  height: 100dvh;
+}
+
+#text-node {
+  --distanceBottom: (var(--fm-descender));
+  --distanceTop: (var(--fm-ascender) - var(--fm-capitalHeight));
+
+  --computedFontSize: calc(var(--capital-height) / var(--fm-capitalHeight));
+  --valign: calc(
+    (var(--distanceBottom) - var(--distanceTop)) * var(--computedFontSize)
+  );
+  --computedLineheight: calc(
+    (var(--line-height) * var(--capital-height)) - var(--valign)
+  );
+
+  font-family: var(--font);
+  font-size: var(--computedFontSize);
+  line-height: var(--computedLineheight);
+  white-space: nowrap;
+}
+
+#text-node > span {
+  text-transform: uppercase;
+  vertical-align: calc(var(--valign) * -1);
+}
+
+.animate {
+  position: absolute;
+  transform: translateX(-100%);
+  animation: marqueeAnimation calc(var(--animation-duration) * 1s) linear
+    infinite;
+}
+
+@keyframes marqueeAnimation {
+  to {
+    transform: translateX(round(up, 100dvw, 100%));
+  }
+}
