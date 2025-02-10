@@ -1,0 +1,43 @@
+body {
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10%;
+  place-items: center;
+}
+
+#checkbox {
+  display: none;
+}
+label {
+  position: absolute;
+  font-family: monospace;
+  height: 100dvh;
+  width: 100dvw;
+  z-index: 1;
+  user-select: none;
+  text-align: center;
+}
+#checkbox:checked ~ main .blur {
+  filter: url("#blur");
+}
+.blur {
+  width: 100%;
+}
+.blur:nth-of-type(1) img {
+  width: 100%;
+  margin-bottom: 50%;
+}
+.blur:nth-of-type(2) video {
+  width: 100%;
+}
+.blur:nth-of-type(3) img {
+  width: 200%;
+  margin-left: -50%;
+}
