@@ -1,0 +1,109 @@
+:root {
+  --primary: 157;
+  --accent: 348;
+  --color-primary-800: hsl(var(--primary), 100%, 20%);
+  --color-accent-500: hsl(var(--accent), 100%, 75%);
+  --color-accent-900: hsl(var(--accent), 100%, 39%);
+}
+body {
+  background: hsl(0, 0%, 95%);
+  font-family: monospace;
+}
+#help {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100dvw;
+  text-align: center;
+  color: hsl(0, 0%, 75%);
+}
+#svg-wrapper {
+  height: calc(100dvh - 4rem);
+  user-select: none;
+  overflow: hidden;
+  border-radius: 30%;
+  aspect-ratio: 1/1;
+  margin: 2rem auto;
+}
+#svg-wrapper svg path {
+  will-change: fill;
+  transition-duration: 2s;
+}
+#inputs {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  width: 10rem;
+  display: flex;
+  flex-direction: column;
+}
+#range-primary {
+  color: var(--color-primary-800);
+}
+#range-accent {
+  color: var(--color-accent-500);
+}
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+input[type="range"]:focus {
+  outline: none;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  background-color: white;
+  border-radius: 0.5rem;
+  height: 1rem;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: 0px;
+  background-color: currentColor;
+  transition: color 2s;
+  border-radius: 0.5rem;
+  height: 1rem;
+  width: 1rem;
+}
+input[type="range"]:focus::-webkit-slider-thumb {
+  outline: 3px solid currentColor;
+  outline-offset: 0.125rem;
+}
+input[type="range"]::-moz-range-track {
+  background-color: white;
+  border-radius: 0.5rem;
+  height: 1rem;
+}
+input[type="range"]::-moz-range-thumb {
+  background-color: currentColor;
+  transition: color 2s;
+  border: none;
+  border-radius: 0.5rem;
+  height: 1rem;
+  width: 1rem;
+}
+input[type="range"]:focus::-moz-range-thumb {
+  outline: 3px solid currentColor;
+  outline-offset: 0.125rem;
+}
+
+.colored-circles {
+  color: var(--color-accent-900);
+  fill: currentColor;
+  transition: color 2s;
+}
+.colored-circles circle {
+  opacity: 0;
+  animation: 2s colorize forwards;
+  animation-play-state: paused;
+}
+.colored-circles circle:hover {
+  animation-play-state: running;
+}
+@keyframes colorize {
+  to {
+    opacity: 1;
+  }
+}

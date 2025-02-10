@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Having fun with SVGs</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- the graphic is created with the help of https://halftone.xoihazard.com/  -->
+
+    <div id="inputs">
+      <input id="range-primary" type="range" max="360" value="157" />
+      <input id="range-accent" type="range" max="360" value="348" />
+    </div>
+    <p id="help">hover over a dot to change its color</p>
+
+    <div id="svg-wrapper">
+      <svg
+        id="SVG"
+        xmlns="http://www.w3.org/2000/svg"
+        width="100%"
+        height="100%"
+        viewBox="0 0 500 500"
+        className="relative"
+      >
+        <path d="M0 0h500v500H0z" fill="var(--color-accent-500)" />
+
+        <g fill="var(--color-primary-800)">
+          <path id="PATH" />
+        </g>
+
+        <g id="SVG_ELEMENT" class="colored-circles" />
+      </svg>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
